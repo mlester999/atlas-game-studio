@@ -24,11 +24,32 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.mts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "vitest.config.ts",
+    "next.config.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "soltower",
+    "atlas-game-center",
+    "agent-sprite-forge",
+    "ai-automation-portfolio",
+    "dolly-s-legacy-launch",
+    "home-veal-guide",
+    "mythimon",
+    "mythimon-game",
+    "pokegame-assets",
+    "pokemon-iso-game",
+    "pokentara",
+    "pos-project",
+    "reel-script-admin",
+    "reel-script-main",
+    "sailana",
+    "starville",
+    "starville-command-center"
+  ]
 }

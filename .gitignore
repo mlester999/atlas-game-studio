@@ -1,0 +1,45 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+
+# debug
+npm-debug.log*
+
+# env — never commit secrets
+.env
+.env.*
+!.env.example
+
+# vercel
+.vercel
+
+# leftover empty folder from monorepo move
+atlas-game-center/
+
+# local sibling projects in this machine folder (not part of this git repo)
+agent-sprite-forge/
+ai-automation-portfolio/
+dolly-s-legacy-launch/
+home-veal-guide/
+kupra-app/
+mythimon/
+mythimon-game/
+pokegame-assets/
+pokemon-iso-game/
+pokentara/
+pos-project/
+reel-script-admin/
+reel-script-main/
+sailana/
+starville/
+starville-command-center/
+homeveal.html
