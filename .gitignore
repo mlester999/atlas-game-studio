@@ -1,6 +1,26 @@
 # OS / editor
 .DS_Store
 *.pem
+*.log
+.vscode/
+.idea/
+
+# dependencies / build
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# env
+.env
+.env*.local
+
+# vercel
+.vercel
 
 # local sibling projects (this machine folder is the monorepo workspace)
 agent-sprite-forge/
@@ -21,17 +41,15 @@ starville/
 starville-command-center/
 homeveal.html
 
-# accidental root Next artifacts (app lives in atlas-game-center/)
-/node_modules/
-/.next/
-/out/
-/src/
-/package.json
-/package-lock.json
-/next.config.ts
-/next-env.d.ts
-/tsconfig.json
-/vercel.json
-/vitest.config.ts
-/eslint.config.mjs
-/postcss.config.mjs
+# soltower keeps its own deps/build artifacts
+soltower/node_modules/
+soltower/.next/
+soltower/dist/
+soltower/tmp/
+soltower/apps/**/node_modules/
+soltower/packages/**/node_modules/
+
+# local leftovers / old app path (app is at repo root now)
+atlas-game-center/
+atlas-game-center.gitignore.bak
+README.atlas.md
