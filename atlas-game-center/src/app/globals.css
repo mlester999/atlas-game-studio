@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/*
+ * Game Studio Atlas — premium cozy sci-fantasy command center.
+ * Deliberately dark: celestial observatory + magical game atlas.
+ * Palette: dark forest green, midnight teal, warm cream, soft mint,
+ * restrained gold, amber warnings, coral critical alerts.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --forest-950: #06140f;
+  --forest-900: #0a1f18;
+  --forest-850: #0d281f;
+  --forest-800: #123528;
+  --forest-700: #1a4a38;
+  --teal-900: #0a2226;
+  --teal-800: #0f3138;
+  --emerald-600: #1f6b4f;
+  --emerald-500: #2d8a66;
+  --mint-300: #a8d5c0;
+  --mint-200: #c5e6d6;
+  --mint-100: #e3f4ec;
+  --cream-100: #f7f2e8;
+  --cream-200: #ebe3d4;
+  --cream-300: #d9cdb8;
+  --gold-400: #d4b85a;
+  --gold-500: #c9a84c;
+  --gold-600: #a88830;
+  --amber-warn: #e0b85c;
+  --coral-500: #e07a6a;
+  --coral-400: #ec9385;
+  --good: #6ecf9b;
+  --muted: #7a9086;
+
+  --glass: rgba(18, 53, 40, 0.55);
+  --glass-strong: rgba(13, 40, 31, 0.82);
+  --glass-border: rgba(168, 213, 192, 0.14);
+  --glass-highlight: rgba(247, 242, 232, 0.06);
+
+  /* Validated chart series (dark band, ΔE_adj 41.3, ≥3:1 on both surfaces) */
+  --series-1: #199e70;
+  --series-2: #c98500;
+  --series-3: #3987e5;
+  --series-4: #e66767;
+  --series-5: #9085e9;
+
+  --background: var(--forest-950);
+  --foreground: var(--cream-100);
+}
+
+@theme inline {
+  --color-forest-950: var(--forest-950);
+  --color-forest-900: var(--forest-900);
+  --color-forest-850: var(--forest-850);
+  --color-forest-800: var(--forest-800);
+  --color-forest-700: var(--forest-700);
+  --color-teal-900: var(--teal-900);
+  --color-teal-800: var(--teal-800);
+  --color-emerald-600: var(--emerald-600);
+  --color-emerald-500: var(--emerald-500);
+  --color-mint-300: var(--mint-300);
+  --color-mint-200: var(--mint-200);
+  --color-mint-100: var(--mint-100);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-cream-300: var(--cream-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-warn: var(--amber-warn);
+  --color-coral-500: var(--coral-500);
+  --color-coral-400: var(--coral-400);
+  --color-good: var(--good);
+  --color-muted: var(--muted);
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-outfit), system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 90% 60% at 70% -10%, rgba(15, 49, 56, 0.55), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 10% 110%, rgba(26, 74, 56, 0.35), transparent 60%),
+    var(--forest-950);
+  background-attachment: fixed;
+}
+
+/* Subtle star particles — pure CSS, disabled with reduced motion */
+.starfield::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(247, 242, 232, 0.5), transparent 100%),
+    radial-gradient(1px 1px at 34% 68%, rgba(197, 230, 214, 0.4), transparent 100%),
+    radial-gradient(1.5px 1.5px at 56% 12%, rgba(212, 184, 90, 0.45), transparent 100%),
+    radial-gradient(1px 1px at 72% 44%, rgba(247, 242, 232, 0.35), transparent 100%),
+    radial-gradient(1px 1px at 88% 78%, rgba(197, 230, 214, 0.4), transparent 100%),
+    radial-gradient(1.5px 1.5px at 22% 88%, rgba(247, 242, 232, 0.3), transparent 100%),
+    radial-gradient(1px 1px at 44% 36%, rgba(212, 184, 90, 0.3), transparent 100%),
+    radial-gradient(1px 1px at 64% 92%, rgba(247, 242, 232, 0.35), transparent 100%),
+    radial-gradient(1px 1px at 94% 18%, rgba(197, 230, 214, 0.45), transparent 100%);
+  animation: twinkle 9s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield::before {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Panels — translucent layered surfaces */
+.panel {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 4px 24px rgba(3, 10, 8, 0.35);
+}
+
+.panel-strong {
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 6px 32px rgba(3, 10, 8, 0.45);
+}
+
+/* Focus visibility — keyboard users must always see where they are */
+:focus-visible {
+  outline: 2px solid var(--gold-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Accessible slider styling */
+input[type="range"] {
+  accent-color: var(--emerald-500);
+  height: 1.5rem;
+}
+
+input[type="number"],
+input[type="text"],
+textarea,
+select {
+  background: rgba(6, 20, 15, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.5rem;
+  color: var(--cream-100);
+  padding: 0.375rem 0.625rem;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--emerald-500);
+}
+
+::selection {
+  background: rgba(45, 138, 102, 0.5);
+}
+
+/* Recessive scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--forest-700) transparent;
+}
+
+/* Chart text never wears series color */
+.viz-root {
+  --surface-1: var(--forest-900);
+  --text-primary: var(--cream-100);
+  --text-secondary: var(--mint-300);
+  --text-muted: var(--muted);
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--forest-800);
+  color: var(--cream-100);
+  border-radius: 0 0 0.5rem 0;
+}
+
+.skip-link:focus {
+  left: 0;
+  top: 0;
+}
