@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "next dev -p 3400",
     "build": "next build",
-    "start": "next start -p 3400",
+    "start": "next start -p ${PORT:-3400}",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
+  },
+  "engines": {
+    "node": ">=20.9.0"
   },
   "dependencies": {
     "@react-three/fiber": "^9.0.0",
